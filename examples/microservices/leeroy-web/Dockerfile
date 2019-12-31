@@ -1,7 +1,7 @@
-FROM golang:1.12.9-alpine3.10 as builder
+FROM harbor.t2cp.com/dev/golang:1.12.9-alpine3.10
 COPY web.go .
 RUN go build -o /web .
 
-FROM alpine:3.10
+FROM harbor.t2cp.com/dev/alpine:3.10
 CMD ["./web"]
 COPY --from=builder /web .
